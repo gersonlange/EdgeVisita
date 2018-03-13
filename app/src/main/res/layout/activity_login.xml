@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/img_login"
+        android:layout_width="wrap_content"
+        android:layout_height="220dp"
+        android:layout_marginTop="40dp"
+        android:padding="50dp"
+        android:scaleType="center"
+        android:src="@drawable/login"
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/container_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:layout_below="@id/img_login">
+
+        <EditText
+            android:id="@+id/input_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/usuario"
+            android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/container_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/container_email"
+        android:background="@android:color/white"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp">
+
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/senha"
+            android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_enter"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/acessar"
+        android:layout_below="@id/container_password"
+        android:padding="8dp" />
+
+</RelativeLayout>

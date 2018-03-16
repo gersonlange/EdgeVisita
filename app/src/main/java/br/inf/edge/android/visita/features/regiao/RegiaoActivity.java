@@ -1,11 +1,16 @@
 package br.inf.edge.android.visita.features.regiao;
 
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -15,6 +20,7 @@ import java.util.ArrayList;
 
 import br.inf.edge.android.visita.R;
 import br.inf.edge.android.visita.data.Session;
+import br.inf.edge.android.visita.features.login.LoginActivity;
 import br.inf.edge.android.visita.model.Dados;
 import br.inf.edge.android.visita.model.Regiao;
 import br.inf.edge.android.visita.web.WebTaskDados;
@@ -29,12 +35,40 @@ public class RegiaoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regiao);
 
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if(item.getItemId()==R.id.btn_sair) {
+                    new Session(getApplicationContext())
+                            .set(Session.USUARIO_TOKEN, null)
+                            .set(Session.USUARIO_NOME, null);
+
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+
+                    finish();
+                }
+                return false;
+            }
+        });
+
         recyclerView = findViewById(R.id.recycler_regiao);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
         adapter = new RegiaoAdapter(new ArrayList<Regiao>(),this);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_regiao, menu);
+        return true;
     }
 
     @Override

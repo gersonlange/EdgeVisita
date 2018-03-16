@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".features.regiao.RegiaoActivity">
+        <activity android:name=".features.regiao.RegiaoActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
     </application>

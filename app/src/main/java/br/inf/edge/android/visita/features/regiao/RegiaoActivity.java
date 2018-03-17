@@ -2,11 +2,14 @@ package br.inf.edge.android.visita.features.regiao;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +29,7 @@ import br.inf.edge.android.visita.model.Regiao;
 import br.inf.edge.android.visita.web.WebTaskDados;
 
 public class RegiaoActivity extends AppCompatActivity {
-
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView recyclerView;
     private RegiaoAdapter adapter;
 
@@ -57,9 +60,24 @@ public class RegiaoActivity extends AppCompatActivity {
             }
         });
 
+        mSwipeRefreshLayout = findViewById(R.id.swipe_regiao);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.d("DEBUG", "refresh");
+
+                atualizaDados(true);
+            }
+        });
+
+
+
         recyclerView = findViewById(R.id.recycler_regiao);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
+
+        recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),
+                DividerItemDecoration.VERTICAL));
 
         adapter = new RegiaoAdapter(new ArrayList<Regiao>(),this);
         recyclerView.setAdapter(adapter);
@@ -77,9 +95,21 @@ public class RegiaoActivity extends AppCompatActivity {
 
         EventBus.getDefault().register(this);
 
+        atualizaDados(false);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    private void atualizaDados(boolean forcar) {
+        mSwipeRefreshLayout.setRefreshing(true);
+
         Session mySession = new Session(this);
 
-        if ( mySession.get(Session.DADOS).trim().isEmpty() ) {
+        if ( forcar || mySession.get(Session.DADOS).trim().isEmpty() ) {
             WebTaskDados taskDados = new WebTaskDados(this, mySession.get(Session.USUARIO_TOKEN));
             taskDados.execute();
         } else {
@@ -91,20 +121,16 @@ public class RegiaoActivity extends AppCompatActivity {
             }
             setDados(dados);
         }
-    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     public void setDados(Dados dados) {
         if ( dados == null || dados.getRegiao().size() == 0 ) {
             findViewById(R.id.container_empty).setVisibility(View.VISIBLE);
-            findViewById(R.id.recycler_regiao).setVisibility(View.GONE);
+            findViewById(R.id.swipe_regiao).setVisibility(View.GONE);
         } else {
-            findViewById(R.id.recycler_regiao).setVisibility(View.VISIBLE);
+            findViewById(R.id.swipe_regiao).setVisibility(View.VISIBLE);
             findViewById(R.id.container_empty).setVisibility(View.GONE);
             adapter.regiaoList = dados.getRegiao();
             adapter.notifyDataSetChanged();

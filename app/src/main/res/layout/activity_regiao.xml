@@ -5,7 +5,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -34,11 +35,17 @@
 
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_regiao"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_regiao"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
-        android:layout_below="@id/toolbar"/>
+        android:layout_below="@id/toolbar"
+        android:visibility="visible" >
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_regiao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

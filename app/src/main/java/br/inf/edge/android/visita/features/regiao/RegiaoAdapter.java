@@ -39,6 +39,7 @@ public class RegiaoAdapter extends RecyclerView.Adapter<RegiaoViewHolder> {
     public void onBindViewHolder(RegiaoViewHolder holder, int position) {
         final Regiao regiao = regiaoList.get(position);
 
+        holder.labelCodigo.setText(Integer.toString(regiao.getCodigo()));
         holder.labelRegiao.setText(regiao.getRegiao());
         holder.labelObservacao.setText(regiao.getObservacao());
     }

@@ -7,5 +7,7 @@
     <string name="senha">Senha</string>
     <string name="acessar">Acessar</string>
     <string name="message_wait">Aguarde</string>
-    <string name="error_empty">Sem regiões</string>
+    <string name="error_empty_regiao">Sem regiões</string>
+    <string name="error_empty_clientes">Sem clientes</string>
+    <string name="titulo_cliente">Edge Visita - Cliente</string>
 </resources>

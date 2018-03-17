@@ -9,8 +9,12 @@ import java.util.List;
 
 public class Dados
 {
-    public Dados(String response) throws  JSONException {
-        JSONObject responseAsJSON = new JSONObject(response);
+    private String json;
+
+    public Dados(String json) throws  JSONException {
+        this.json = json;
+
+        JSONObject responseAsJSON = new JSONObject(json);
 
         JSONArray regioesJon = responseAsJSON.getJSONArray("regioes");
         List<Regiao> regioes = new ArrayList<>();
@@ -28,17 +32,23 @@ public class Dados
             JSONArray clientesJson = regiaoJson.getJSONArray("clientes");
             List<Cliente> clientes = new ArrayList<>();
 
-            for ( int a = 0 ; a < regioesJon.length() ; a++ ) {
-                JSONObject clienteJson = (JSONObject)regioesJon.get(a);
+            for ( int a = 0 ; a < clientesJson.length() ; a++ ) {
+                JSONObject clienteJson = (JSONObject)clientesJson.get(a);
 
                 Cliente cliente =  new Cliente();
                 cliente.setCodigo(clienteJson.getInt("codigo"));
                 cliente.setNome(clienteJson.getString("nome"));
 
+                if ( clienteJson.has("observacao") )
+                    cliente.setObservacao(clienteJson.getString("observacao"));
+
                 clientes.add(cliente);
             }
 
-            regiao.setClientes(clientes);
+            Clientes vclientes = new Clientes();
+            vclientes.setClientes(clientes);
+
+            regiao.setClientes(vclientes);
 
             regioes.add(regiao);
         }
@@ -54,5 +64,9 @@ public class Dados
 
     public void setRegiao(List<Regiao> regiao) {
         this.regiao = regiao;
+    }
+
+    public String getJson() {
+        return json;
     }
 }

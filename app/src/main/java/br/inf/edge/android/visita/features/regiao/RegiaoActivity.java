@@ -45,7 +45,7 @@ public class RegiaoActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if(item.getItemId()==R.id.btn_sair) {
+                if  (item.getItemId()==R.id.btn_sair) {
                     new Session(getApplicationContext())
                             .set(Session.USUARIO_TOKEN, null)
                             .set(Session.USUARIO_NOME, null);
@@ -56,6 +56,7 @@ public class RegiaoActivity extends AppCompatActivity {
 
                     finish();
                 }
+
                 return false;
             }
         });
@@ -64,12 +65,9 @@ public class RegiaoActivity extends AppCompatActivity {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Log.d("DEBUG", "refresh");
-
                 atualizaDados(true);
             }
         });
-
 
 
         recyclerView = findViewById(R.id.recycler_regiao);
@@ -114,11 +112,13 @@ public class RegiaoActivity extends AppCompatActivity {
             taskDados.execute();
         } else {
             Dados dados = null;
+
             try {
                 dados = new Dados(mySession.get(Session.DADOS));
             } catch (JSONException e) {
 
             }
+
             setDados(dados);
         }
 
@@ -139,6 +139,8 @@ public class RegiaoActivity extends AppCompatActivity {
 
     @Subscribe
     public void onEvent(Dados dados) {
+        Session session = new Session(this);
+        session.set(Session.DADOS, dados.getJson());
         setDados(dados);
     }
 

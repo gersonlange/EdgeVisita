@@ -5,7 +5,7 @@ import java.util.List;
 public class Regiao {
     private int codigo;
     private String regiao, observacao;
-    private List<Cliente> clientes;
+    private Clientes clientes;
 
     public String getObservacao() {
         return observacao;
@@ -31,11 +31,11 @@ public class Regiao {
         this.codigo = codigo;
     }
 
-    public List<Cliente> getClientes() {
+    public Clientes getClientes() {
         return clientes;
     }
 
-    public void setClientes(List<Cliente> clientes) {
+    public void setClientes(Clientes clientes) {
         this.clientes = clientes;
     }
 }

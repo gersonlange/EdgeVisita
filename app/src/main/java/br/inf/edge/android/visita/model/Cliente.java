@@ -3,6 +3,7 @@ package br.inf.edge.android.visita.model;
 public class Cliente {
     private int codigo;
     private String nome;
+    private String observacao;
 
     public int getCodigo() {
         return codigo;
@@ -18,5 +19,13 @@ public class Cliente {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 }

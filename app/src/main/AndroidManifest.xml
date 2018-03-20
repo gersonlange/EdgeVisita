@@ -36,6 +36,14 @@
                 android:value="br.inf.edge.android.visita.features.regiao.RegiaoActivity" />
         </activity>
 
+        <activity android:name=".features.visita.VisitaActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.inf.edge.android.visita.features.cliente.ClienteActivity" />
+        </activity>
+
     </application>
 
 </manifest>

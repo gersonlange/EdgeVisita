@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Edge Visita</string>
+    <string name="titulo_cliente">Edge Visita - Cliente</string>
+    <string name="titulo_visita">Edge Visita - Visita</string>
     <string name="error_connection">Você não tem conexão com a internet</string>
     <string name="error_request">Você não tem permissão para acessar este serviço</string>
     <string name="label_error_invalid_response">Resposta do servidor é inválida</string>
@@ -9,5 +11,7 @@
     <string name="message_wait">Aguarde</string>
     <string name="error_empty_regiao">Sem regiões</string>
     <string name="error_empty_clientes">Sem clientes</string>
-    <string name="titulo_cliente">Edge Visita - Cliente</string>
+    <string name="inicia">Inicia</string>
+    <string name="termina">Termina</string>
+    <string name="digita">Digite uma observação...</string>
 </resources>

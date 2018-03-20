@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/nome_cliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:focusable="false"/>
+
+        <Button
+            android:id="@+id/btn_inicia"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:textSize="18sp"
+            android:layout_below="@id/nome_cliente"
+            android:text="@string/inicia"/>
+
+        <EditText
+            android:id="@+id/text_observacao"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_inicia"
+            android:minLines="6"
+            android:gravity="top"
+            android:hint="@string/digita"/>
+
+        <Button
+            android:id="@+id/btn_termina"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:textSize="18sp"
+            android:layout_below="@id/text_observacao"
+            android:text="@string/termina"/>
+
+    </RelativeLayout>
+
+</ScrollView>

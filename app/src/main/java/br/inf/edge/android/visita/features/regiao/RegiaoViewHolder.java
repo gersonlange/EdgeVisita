@@ -30,8 +30,7 @@ class RegiaoViewHolder extends RecyclerView.ViewHolder implements View.OnClickLi
     }
 
     @Override
-    public void onClick(View view)
-    {
+    public void onClick(View view) {
         EventBus.getDefault().postSticky(getAdapterPosition());
 
         Intent intent = new Intent(view.getContext(), ClienteActivity.class);

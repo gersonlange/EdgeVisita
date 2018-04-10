@@ -1,4 +1,4 @@
-package br.inf.edge.android.visita.features.cliente;
+package br.inf.edge.suporte.visita.features.cliente;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +12,11 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
-import br.inf.edge.android.visita.R;
-import br.inf.edge.android.visita.data.Session;
-import br.inf.edge.android.visita.model.Cliente;
-import br.inf.edge.android.visita.model.Clientes;
-import br.inf.edge.android.visita.model.Dados;
+import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.data.Session;
+import br.inf.edge.suporte.visita.model.Cliente;
+import br.inf.edge.suporte.visita.model.Clientes;
+import br.inf.edge.suporte.visita.model.Dados;
 
 public class ClienteActivity extends AppCompatActivity {
     private RecyclerView recyclerView;

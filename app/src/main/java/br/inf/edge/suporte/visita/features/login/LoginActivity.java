@@ -1,4 +1,4 @@
-package br.inf.edge.android.visita.features.login;
+package br.inf.edge.suporte.visita.features.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,11 +13,11 @@ import android.widget.EditText;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import br.inf.edge.android.visita.R;
-import br.inf.edge.android.visita.data.Session;
-import br.inf.edge.android.visita.features.regiao.RegiaoActivity;
-import br.inf.edge.android.visita.model.Usuario;
-import br.inf.edge.android.visita.web.WebTaskLogin;
+import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.data.Session;
+import br.inf.edge.suporte.visita.features.regiao.RegiaoActivity;
+import br.inf.edge.suporte.visita.model.Usuario;
+import br.inf.edge.suporte.visita.web.WebTaskLogin;
 
 public class LoginActivity extends AppCompatActivity {
 

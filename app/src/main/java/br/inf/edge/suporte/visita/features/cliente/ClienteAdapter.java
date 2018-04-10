@@ -1,4 +1,4 @@
-package br.inf.edge.android.visita.features.cliente;
+package br.inf.edge.suporte.visita.features.cliente;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import br.inf.edge.android.visita.R;
-import br.inf.edge.android.visita.model.Cliente;
+import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.model.Cliente;
 
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteViewHolder> {
 

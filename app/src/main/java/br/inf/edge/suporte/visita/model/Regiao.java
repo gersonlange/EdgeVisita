@@ -1,10 +1,8 @@
-package br.inf.edge.android.visita.model;
-
-import java.util.List;
+package br.inf.edge.suporte.visita.model;
 
 public class Regiao {
     private int codigo;
-    private String regiao, observacao;
+    private String regiao, observacao, data;
     private Clientes clientes;
 
     public String getObservacao() {
@@ -37,5 +35,13 @@ public class Regiao {
 
     public void setClientes(Clientes clientes) {
         this.clientes = clientes;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

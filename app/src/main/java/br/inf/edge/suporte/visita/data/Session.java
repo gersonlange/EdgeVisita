@@ -1,4 +1,4 @@
-package br.inf.edge.android.visita.data;
+package br.inf.edge.suporte.visita.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;

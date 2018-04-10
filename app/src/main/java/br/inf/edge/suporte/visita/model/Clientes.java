@@ -1,4 +1,4 @@
-package br.inf.edge.android.visita.model;
+package br.inf.edge.suporte.visita.model;
 
 import java.util.List;
 

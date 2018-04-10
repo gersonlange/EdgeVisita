@@ -1,26 +1,13 @@
-package br.inf.edge.android.visita.features.visita;
+package br.inf.edge.suporte.visita.features.visita;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.greenrobot.eventbus.EventBus;
-import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.Date;
-
-import br.inf.edge.android.visita.R;
-import br.inf.edge.android.visita.data.Session;
-import br.inf.edge.android.visita.features.cliente.ClienteAdapter;
-import br.inf.edge.android.visita.model.Cliente;
-import br.inf.edge.android.visita.model.Clientes;
-import br.inf.edge.android.visita.model.Dados;
+import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.model.Cliente;
 
 public class VisitaActivity extends AppCompatActivity {
 
@@ -54,7 +41,7 @@ public class VisitaActivity extends AppCompatActivity {
         btnTermina.setOnClickListener(new TextView.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
                 finish();
             }
         });

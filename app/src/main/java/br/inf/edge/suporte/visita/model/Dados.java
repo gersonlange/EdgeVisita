@@ -1,4 +1,4 @@
-package br.inf.edge.android.visita.model;
+package br.inf.edge.suporte.visita.model;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +25,9 @@ public class Dados
             Regiao regiao = new Regiao();
             regiao.setCodigo(regiaoJson.getInt("codigo"));
             regiao.setRegiao(regiaoJson.getString("nome"));
+
+            if ( regiaoJson.has("data") )
+                regiao.setData(regiaoJson.getString("data"));
 
             if ( regiaoJson.has("observacao") )
                 regiao.setObservacao(regiaoJson.getString("observacao"));

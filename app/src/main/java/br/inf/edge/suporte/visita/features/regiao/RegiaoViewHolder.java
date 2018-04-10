@@ -1,23 +1,20 @@
-package br.inf.edge.android.visita.features.regiao;
+package br.inf.edge.suporte.visita.features.regiao;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
-import org.json.JSONException;
 
-import br.inf.edge.android.visita.R;
-import br.inf.edge.android.visita.data.Session;
-import br.inf.edge.android.visita.features.cliente.ClienteActivity;
-import br.inf.edge.android.visita.model.Dados;
+import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.features.cliente.ClienteActivity;
 
 class RegiaoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     TextView labelRegiao;
     TextView labelObservacao;
     TextView labelCodigo;
+    TextView labelData;
 
     public RegiaoViewHolder(View itemView) {
         super(itemView);
@@ -25,6 +22,7 @@ class RegiaoViewHolder extends RecyclerView.ViewHolder implements View.OnClickLi
         itemView.setOnClickListener(this);
 
         labelRegiao = itemView.findViewById(R.id.label_regiao);
+        labelData = itemView.findViewById(R.id.label_data);
         labelObservacao = itemView.findViewById(R.id.label_observacao);
         labelCodigo = itemView.findViewById(R.id.label_codigo);
     }

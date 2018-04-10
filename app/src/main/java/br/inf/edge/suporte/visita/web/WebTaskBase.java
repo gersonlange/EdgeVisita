@@ -1,4 +1,4 @@
-package br.inf.edge.android.visita.web;
+package br.inf.edge.suporte.visita.web;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import br.inf.edge.android.visita.R;
+import br.inf.edge.suporte.visita.R;
 
 public abstract class WebTaskBase extends AsyncTask<Void, Void, Void> {
 

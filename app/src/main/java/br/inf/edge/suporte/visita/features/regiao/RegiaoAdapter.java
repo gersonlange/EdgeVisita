@@ -1,18 +1,15 @@
-package br.inf.edge.android.visita.features.regiao;
+package br.inf.edge.suporte.visita.features.regiao;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
-import br.inf.edge.android.visita.R;
-import br.inf.edge.android.visita.model.Regiao;
+import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.model.Regiao;
 
 public class RegiaoAdapter extends RecyclerView.Adapter<RegiaoViewHolder> {
 
@@ -41,6 +38,7 @@ public class RegiaoAdapter extends RecyclerView.Adapter<RegiaoViewHolder> {
 
         holder.labelCodigo.setText(Integer.toString(regiao.getCodigo()));
         holder.labelRegiao.setText(regiao.getRegiao());
+        holder.labelData.setText(regiao.getData());
         holder.labelObservacao.setText(regiao.getObservacao());
     }
 

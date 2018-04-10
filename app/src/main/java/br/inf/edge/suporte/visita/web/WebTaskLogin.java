@@ -1,4 +1,4 @@
-package br.inf.edge.android.visita.web;
+package br.inf.edge.suporte.visita.web;
 
 import android.content.Context;
 
@@ -9,8 +9,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import br.inf.edge.android.visita.R;
-import br.inf.edge.android.visita.model.Usuario;
+import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.model.Usuario;
 
 public class WebTaskLogin extends WebTaskBase{
 

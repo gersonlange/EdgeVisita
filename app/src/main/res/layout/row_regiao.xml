@@ -15,7 +15,19 @@
         android:layout_margin="8dp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
+        android:hint="Regiao 01"
         />
+
+    <TextView
+        android:id="@+id/label_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/label_regiao"
+        android:layout_margin="8dp"
+        android:hint="01/01/2000"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14dp" />
 
     <TextView
         android:id="@+id/label_observacao"
@@ -24,7 +36,8 @@
         android:layout_below="@id/label_regiao"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:hint="Observacao teste"/>
 
     <TextView
         android:id="@+id/label_codigo"

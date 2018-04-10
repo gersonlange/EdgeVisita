@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.inf.edge.android.visita">
+    package="br.inf.edge.suporte.visita">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".features.login.LoginActivity"
+        <activity android:name="br.inf.edge.suporte.visita.features.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -23,25 +23,25 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".features.regiao.RegiaoActivity"
+        <activity android:name="br.inf.edge.suporte.visita.features.regiao.RegiaoActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".features.cliente.ClienteActivity"
+        <activity android:name="br.inf.edge.suporte.visita.features.cliente.ClienteActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="br.inf.edge.android.visita.features.regiao.RegiaoActivity" />
+                android:value="br.inf.edge.suporte.visita.features.regiao.RegiaoActivity" />
         </activity>
 
-        <activity android:name=".features.visita.VisitaActivity"
+        <activity android:name="br.inf.edge.suporte.visita.features.visita.VisitaActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="br.inf.edge.android.visita.features.cliente.ClienteActivity" />
+                android:value="br.inf.edge.suporte.visita.features.cliente.ClienteActivity" />
         </activity>
 
     </application>

@@ -1,22 +1,16 @@
-package br.inf.edge.android.visita.web;
+package br.inf.edge.suporte.visita.web;
 
 import android.content.Context;
 
 import org.greenrobot.eventbus.EventBus;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import br.inf.edge.android.visita.R;
-import br.inf.edge.android.visita.model.Cliente;
-import br.inf.edge.android.visita.model.Dados;
-import br.inf.edge.android.visita.model.Regiao;
-import br.inf.edge.android.visita.model.Usuario;
+import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.model.Dados;
 
 public class WebTaskDados extends WebTaskBase{
 

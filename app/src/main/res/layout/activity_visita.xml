@@ -13,7 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:focusable="false"/>
+            android:focusable="false"
+            android:textSize="20sp"/>
 
         <Button
             android:id="@+id/btn_inicia"

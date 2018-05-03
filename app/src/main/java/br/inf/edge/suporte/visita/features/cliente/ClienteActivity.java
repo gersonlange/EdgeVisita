@@ -11,9 +11,12 @@ import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.dao.DadosDAO;
 import br.inf.edge.suporte.visita.data.Session;
+import br.inf.edge.suporte.visita.model.Cliente;
 
 public class ClienteActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -49,26 +52,17 @@ public class ClienteActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    public void setCliente(Integer posicao) {
+    public void setCliente(Integer codigoRegiao) {
 
-        Dados dados = null;
-        Session mySession = new Session(this);
+        List<Cliente> clientes = new DadosDAO().getClientes( codigoRegiao );
 
-        try {
-            dados = new Dados(mySession.get(Session.DADOS));
-        } catch (JSONException e) {
-
-        }
-
-        Clientes clientes = dados.getRegiao().get(posicao).getClientes();
-
-        if ( clientes == null || clientes.getClientes().size() == 0 ) {
+        if ( clientes == null || clientes.size() == 0 ) {
             findViewById(R.id.container_cliente_empty).setVisibility(View.VISIBLE);
             findViewById(R.id.recycler_cliente).setVisibility(View.GONE);
         } else {
             findViewById(R.id.recycler_cliente).setVisibility(View.VISIBLE);
             findViewById(R.id.container_cliente_empty).setVisibility(View.GONE);
-            adapter.clienteList = clientes.getClientes();
+            adapter.clienteList = clientes;
             adapter.notifyDataSetChanged();
        }
     }

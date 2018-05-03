@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import br.inf.edge.android.visita.model.Regiao;
 import br.inf.edge.suporte.visita.R;
 
 public class RegiaoAdapter extends RecyclerView.Adapter<RegiaoViewHolder> {
@@ -39,6 +40,7 @@ public class RegiaoAdapter extends RecyclerView.Adapter<RegiaoViewHolder> {
         holder.labelRegiao.setText(regiao.getRegiao());
         holder.labelData.setText(regiao.getData());
         holder.labelObservacao.setText(regiao.getObservacao());
+        holder.codigoRegiao = regiao.getCodigo();
     }
 
     @Override

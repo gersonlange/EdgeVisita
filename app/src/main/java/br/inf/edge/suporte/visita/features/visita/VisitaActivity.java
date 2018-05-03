@@ -6,14 +6,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.dao.DadosDAO;
+import br.inf.edge.suporte.visita.dao.VisitaDAO;
+import br.inf.edge.suporte.visita.model.Cliente;
 
 public class VisitaActivity extends AppCompatActivity {
 
     TextView edtCliente, edtObservacao;
     Button btnInicia, btnTermina;
 
-    Cliente dadosCliente;
+    Cliente cliente;
+    VisitaDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +38,7 @@ public class VisitaActivity extends AppCompatActivity {
         btnInicia.setOnClickListener(new TextView.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //dadosCliente.setDataInicio(new Date());
-
-                inicia(true);
+                inicia();
             }
         });
 
@@ -40,17 +48,48 @@ public class VisitaActivity extends AppCompatActivity {
         btnTermina.setOnClickListener(new TextView.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                finish();
+                finaliza();
             }
         });
 
-        inicia(false);
+        dao = new VisitaDAO();
+
+        habilita(false);
+
+        setCliente( EventBus.getDefault().getStickyEvent(Integer.class) );
     }
 
-    private void inicia(boolean b) {
+    private void habilita(boolean b) {
         btnInicia.setEnabled(! b);
         edtObservacao.setEnabled(b);
         btnTermina.setEnabled(b);
+    }
+
+    private void inicia() {
+        habilita(true);
+
+        Date date = new Date();
+
+        String data = new SimpleDateFormat("dd/MM/yyyy").format(date);
+        String hora = new SimpleDateFormat("HH:mm").format(date);
+
+        dao.insert(cliente.getCodigo(), cliente.getCodigoRegiao(), data, hora);
+     }
+
+    private void finaliza() {
+        String hora = new SimpleDateFormat("HH:mm").format(new Date());
+
+        dao.fecha(cliente.getCodigo(), "", "",
+                edtObservacao.getText().toString(),
+                hora);
+
+        finish();
+    }
+
+    public void setCliente(Integer codigoCliente) {
+
+        cliente = new DadosDAO().getCliente( codigoCliente );
+
+        edtCliente.setText( cliente.getNome() + "\n" + cliente.getEndereco());
     }
 }

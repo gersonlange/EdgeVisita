@@ -17,13 +17,17 @@ import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import br.inf.edge.android.visita.model.Regiao;
 import br.inf.edge.suporte.visita.R;
+import br.inf.edge.suporte.visita.dao.DadosDAO;
+import br.inf.edge.suporte.visita.data.Database;
 import br.inf.edge.suporte.visita.data.Session;
 import br.inf.edge.suporte.visita.features.login.LoginActivity;
+import br.inf.edge.suporte.visita.model.Dados;
 import br.inf.edge.suporte.visita.web.WebTaskDados;
 
 public class RegiaoActivity extends AppCompatActivity {
@@ -96,6 +100,8 @@ public class RegiaoActivity extends AppCompatActivity {
 
         adapter = new RegiaoAdapter(new ArrayList<Regiao>(),this);
         recyclerView.setAdapter(adapter);
+
+        Database.init(this);
     }
 
     @Override
@@ -122,43 +128,42 @@ public class RegiaoActivity extends AppCompatActivity {
     private void atualizaDados(boolean forcar) {
         mSwipeRefreshLayout.setRefreshing(true);
 
-        Session mySession = new Session(this);
+        List<Regiao> regioes = new DadosDAO().getRegioes();
 
-        if ( forcar || mySession.get(Session.DADOS).trim().isEmpty() ) {
-            WebTaskDados taskDados = new WebTaskDados(this, mySession.get(Session.USUARIO_TOKEN));
+        if ( forcar || regioes == null || regioes.size() == 0 ) {
+
+            if ( forcar )
+                Database.drop();
+
+            WebTaskDados taskDados = new WebTaskDados(this, new Session(this).get(Session.USUARIO_TOKEN));
             taskDados.execute();
         } else {
-            Dados dados = null;
-
-            try {
-                dados = new Dados(mySession.get(Session.DADOS));
-            } catch (JSONException e) {
-
-            }
-
-            setDados(dados);
+            setDados(regioes);
         }
 
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
-    public void setDados(Dados dados) {
-        if ( dados == null || dados.getRegiao().size() == 0 ) {
+    public void setDados(List<Regiao> regioes) {
+        if ( regioes == null || regioes.size() == 0 ) {
             findViewById(R.id.container_empty).setVisibility(View.VISIBLE);
             findViewById(R.id.swipe_regiao).setVisibility(View.GONE);
         } else {
             findViewById(R.id.swipe_regiao).setVisibility(View.VISIBLE);
             findViewById(R.id.container_empty).setVisibility(View.GONE);
-            adapter.regiaoList = dados.getRegiao();
+            adapter.regiaoList = regioes;
             adapter.notifyDataSetChanged();
         }
     }
 
     @Subscribe
     public void onEvent(Dados dados) {
-        Session session = new Session(this);
-        session.set(Session.DADOS, dados.getJson());
-        setDados(dados);
+
+        DadosDAO dao = new DadosDAO();
+        dao.insertRegiao(dados.getRegioes());
+        dao.insertCliente(dados.getClientes());
+
+        setDados(dao.getRegioes());
     }
 
     @Subscribe

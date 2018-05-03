@@ -15,6 +15,7 @@ class RegiaoViewHolder extends RecyclerView.ViewHolder implements View.OnClickLi
     TextView labelObservacao;
     TextView labelCodigo;
     TextView labelData;
+    Integer codigoRegiao;
 
     public RegiaoViewHolder(View itemView) {
         super(itemView);
@@ -29,7 +30,7 @@ class RegiaoViewHolder extends RecyclerView.ViewHolder implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        EventBus.getDefault().postSticky(getAdapterPosition());
+        EventBus.getDefault().postSticky( codigoRegiao );
 
         Intent intent = new Intent(view.getContext(), ClienteActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);

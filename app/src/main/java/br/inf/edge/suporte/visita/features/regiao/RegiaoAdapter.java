@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import br.inf.edge.suporte.visita.R;
-import br.inf.edge.suporte.visita.model.Regiao;
 
 public class RegiaoAdapter extends RecyclerView.Adapter<RegiaoViewHolder> {
 

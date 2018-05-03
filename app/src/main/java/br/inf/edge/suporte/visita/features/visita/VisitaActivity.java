@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import br.inf.edge.suporte.visita.R;
-import br.inf.edge.suporte.visita.model.Cliente;
 
 public class VisitaActivity extends AppCompatActivity {
 

@@ -24,8 +24,6 @@ import java.util.ArrayList;
 import br.inf.edge.suporte.visita.R;
 import br.inf.edge.suporte.visita.data.Session;
 import br.inf.edge.suporte.visita.features.login.LoginActivity;
-import br.inf.edge.suporte.visita.model.Dados;
-import br.inf.edge.suporte.visita.model.Regiao;
 import br.inf.edge.suporte.visita.web.WebTaskDados;
 
 public class RegiaoActivity extends AppCompatActivity {

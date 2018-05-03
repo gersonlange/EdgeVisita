@@ -14,9 +14,6 @@ import java.util.ArrayList;
 
 import br.inf.edge.suporte.visita.R;
 import br.inf.edge.suporte.visita.data.Session;
-import br.inf.edge.suporte.visita.model.Cliente;
-import br.inf.edge.suporte.visita.model.Clientes;
-import br.inf.edge.suporte.visita.model.Dados;
 
 public class ClienteActivity extends AppCompatActivity {
     private RecyclerView recyclerView;

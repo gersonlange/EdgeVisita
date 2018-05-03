@@ -7,8 +7,6 @@ public class Session {
 
     private final String CATEGORY_SESSION = "session";
 
-    public static final String DADOS = "dados";
-
     public static final String USUARIO      = "usuario";
     public static final String USUARIO_NOME = "usuario_nome";
     public static final String USUARIO_TOKEN = "usuario_token";

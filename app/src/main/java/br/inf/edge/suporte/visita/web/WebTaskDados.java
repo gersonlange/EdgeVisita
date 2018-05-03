@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import br.inf.edge.suporte.visita.R;
-import br.inf.edge.suporte.visita.model.Dados;
 
 public class WebTaskDados extends WebTaskBase{
 
